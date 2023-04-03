@@ -8,6 +8,11 @@ Found this useful? [Buy us a $8 coffee here](https://www.buymeacoffee.com/eightd
 
 ![Some tweets](./assets/example.png)
 
+## Installing this fork
+
+In order to install this fork you must clone this repository and run the `build.ps1` script (Windows only). Afterwards go to your desired browser and search for the extesions settings, enable Developer Options and import the `.build` folder. And you're done :)
+
+Links to the original extension are bellow
 
 ## Installation Instructions
 
