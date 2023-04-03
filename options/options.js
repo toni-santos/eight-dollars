@@ -19,6 +19,7 @@ function saveOptions() {
     "removeBlueVerification"
   ).checked;
   const advancedSearch = document.getElementById("advancedSearch").checked;
+  const removeTweets = document.getElementById("removeTweets").checked;
   chrome.storage.local.set(
     {
       advancedSearch,
@@ -30,6 +31,7 @@ function saveOptions() {
         twitterBlueLabel: textEnabled ? twitterBlueVerifiedLabel : "",
         enableBorder: textEnabled ? textEnableBorder : true,
       },
+      removeTweets,
     },
     function () {
       const status = document.getElementById("status");
@@ -56,6 +58,7 @@ function restoreOptions() {
         twitterBlueLabel: "Paid",
         enableBorder: true,
       },
+      removeTweets: false,
     },
     function (items) {
       document.getElementById("memeMode").checked = items.memeMode;
@@ -69,6 +72,7 @@ function restoreOptions() {
       document.getElementById("removeBlueVerification").checked =
         items.removeBlueVerification;
       document.getElementById("advancedSearch").checked = items.advancedSearch;
+      document.getElementById("removeTweets").checked = items.removeTweets;
       onTextEnabledChange();
     }
   );

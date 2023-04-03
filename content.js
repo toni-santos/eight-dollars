@@ -9,6 +9,7 @@ const defaultConfig = {
     twitterBlueLabel: "Paid",
     enableBorder: true,
   },
+  removeTweets: false,
 };
 
 function createSettingsDomNode(items) {

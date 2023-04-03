@@ -2,6 +2,7 @@ const config = document.getElementById("eight-dollars-settings");
 const data = JSON.parse(config.innerText);
 
 const MEME_MODE = data.memeMode;
+const REMOVE_TWEETS = data.removeTweets;
 const TEXT_ENABLED = data.textEnabled;
 const REMOVE_TWITTER_BLUE_VERIFICATION = data.removeBlueVerification;
 const TEXT_VERIFIED_LABEL = data.textOptions?.verifiedLabel || "";
@@ -176,6 +177,42 @@ function changeBlueVerified(prependHTML, elm, isSmall) {
   if (elm.dataset.eightDollarsStatus === 'blueVerified') {
     // already replaced this element
     return
+  }
+
+    
+  if (REMOVE_TWEETS) {
+    element = elm;
+
+    // deepest rooted checkmark = 18 levels
+    let level = 15;
+
+    // constant classNames to be checked when traversing the 18 levels
+    const sidebarAccountClassName = "css-18t94o4 css-1dbjc4n r-1ny4l3l r-ymttw5 r-1f1sjgu r-o7ynqc r-6416eg";
+    const QRT = "css-1dbjc4n r-1kqtdi0 r-1867qdf r-rs99b7 r-1loqt21 r-adacv r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg";
+    const profileHeader = "css-1dbjc4n r-6gpygo r-14gqq1x"
+    const searchBar = "css-1dbjc4n r-150rngu r-kemksi r-1xfd6ze r-qo02w8 r-1d2f490 r-8fhv3p r-h3f8nf r-1rnoaur r-1r851ge r-u8s1d r-zchlnj r-ipm5af"
+
+    while (level-- > 0) {
+      element = element.parentNode;
+      if (!element) return null;
+
+      if (element.className == sidebarAccountClassName) {
+        break;
+      } else if (element.className == QRT) {
+        break;
+      } else if (element.className == profileHeader) {
+        console.log("FOUND IT AAAAAAAAAAAAAA")
+        break;
+      } else if (element.className == searchBar) {
+        break;
+      }
+    }
+    
+    if (element.className == profileHeader || element.className == QRT || element.className == searchBar) {
+    } else {
+      element.remove()
+    }
+    
   }
 
   if (REMOVE_TWITTER_BLUE_VERIFICATION) {
